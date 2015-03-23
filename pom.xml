@@ -18,17 +18,6 @@
     </prerequisites>
 
     <dependencies>
-        <!-- Compile/runtime dependencies -->
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-1.0-sdk</artifactId>
-            <version>1.9.17</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-endpoints</artifactId>
-            <version>1.9.17</version>
-        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -40,32 +29,26 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
         </dependency>
-
-        <!-- Test Dependencies -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-testing</artifactId>
-            <version>1.9.17</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.appengine</groupId>
-            <artifactId>appengine-api-stubs</artifactId>
-            <version>1.9.17</version>
-            <scope>test</scope>
-        </dependency>
+        
+       <dependency>
+	      <groupId>mysql</groupId>
+	      <artifactId>mysql-connector-java</artifactId>
+	      <version>5.1.25</version>
+	    </dependency>
+	    
+	    <dependency>
+	      <groupId>org.datanucleus</groupId>
+	      <artifactId>datanucleus-accessplatform-jpa-rdbms</artifactId>
+	      <version>4.0.4</version>
+	      <type>pom</type>
+	    </dependency>
+	   
+	    <dependency>
+	      <groupId>org.eclipse.persistence</groupId>
+	      <artifactId>javax.persistence</artifactId>
+	      <version>2.1.0</version>
+	    </dependency>
     </dependencies>
+    
 
 </project>
