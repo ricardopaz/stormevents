@@ -14,9 +14,29 @@
  */
 package com.stormevents.dao;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.stormevents.entities.User;
+import com.stormevents.exceptions.ModelException;
 
 public class UserModel extends BasicModel<User> {
-
 	
+	public static final String USER_BY_EMAIL = "SELECT u FROM User u WHERE u.email = :email";
+
+	/**
+	 * Query that returns an user according to his email address
+	 * 
+	 * @param version
+	 * @return user that matches the query
+	 */
+	public User userByEmail(String email) throws ModelException{
+		Map<String, Object> params = new HashMap<>();
+		params.put("email", email);
+		List<User> users = query(USER_BY_EMAIL, params);
+		if(!users.isEmpty())
+			return users.get(0);
+		return null;
+	}
 }
