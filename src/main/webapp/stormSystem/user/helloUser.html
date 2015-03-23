@@ -1,0 +1,16 @@
+<div id="helloUser" class="reports-fields" ng-controller="UserController">
+	{{hello}}
+	<br/>
+	<input type="text" ng-model="userName"/>
+	<br/>
+	<button ng-click="helloUser();" class="btn btn-primary">Hello User</button>
+	<br/>
+	<button id='facebook' onclick="hello( 'facebook' ).login();" class="btn btn-info">Facebook</button>
+	<br/>
+	<button ng-click="getFriends('facebook', 'me/taggable_friends');" class="btn btn-success">Get Facebook me/friends</button>
+	
+	<h2>Friends list</h2>
+	<ul id="list"></ul>
+	<button id="more" style="display:none;"></button>
+
+</div>

@@ -1,0 +1,82 @@
+<div id="login" ng-controller="loginController">
+
+	<!--header start-->
+	<header class="header black-bg">
+	      <!--logo start-->
+	      <a href="index.html" class="logo"><i class="fa fa-fire"></i> <b>Storm Events</b></a>
+	      <!--logo end-->
+	      <div class="nav notify-row" id="top_menu">
+	         
+	      </div>
+	      <div class="top-menu">
+	      	<ul class="nav pull-right top-menu">
+	              <li><a class="logout" href="login.html">Cadastre-se</a></li>
+	      	</ul>
+	      </div>
+	      <div class="line"></div>
+	 </header>
+	<!--header end-->
+
+	<div id="login-page">
+		<div class="container">
+
+			<form class="form-login" action="index.html">
+				<h2 class="form-login-heading">Login</h2>
+				<div class="login-wrap">
+					<input type="text" class="form-control" placeholder="Email"
+						autofocus> <br> <input type="password"
+						class="form-control" placeholder="Senha"> <label
+						class="checkbox"> <span class="pull-right"> <a
+							data-toggle="modal" href="login.html#myModal"> Esqueceu a senha?</a>
+
+					</span>
+					</label>
+					<button class="btn btn-theme btn-block" href="index.html"
+						type="submit">
+						<i class="fa fa-lock"></i> Entrar
+					</button>
+					<hr>
+
+					<div class="login-social-link centered">
+						<p>ou você pode logar via rede social</p>
+						<button class="btn btn-facebook" type="submit">
+							<i class="fa fa-facebook"></i> Facebook
+						</button>
+					</div>
+					<div class="registration">
+						Você ainda não possui conta no Storm?<br /> <a class="" href="#"> Crie sua conta agora </a>
+					</div>
+
+				</div>
+
+				<!-- Modal -->
+				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog"
+					tabindex="-1" id="myModal" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title">Esqueceu sua senha?</h4>
+							</div>
+							<div class="modal-body">
+								<p>Informe o email da sua conta Storm para enviarmos sua nova senha.</p>
+								<input type="text" name="email" placeholder="Email"
+									autocomplete="off" class="form-control placeholder-no-fix">
+
+							</div>
+							<div class="modal-footer">
+								<button data-dismiss="modal" class="btn btn-default"
+									type="button">Cancelar</button>
+								<button class="btn btn-theme" type="button">Solicitar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+
+</div>

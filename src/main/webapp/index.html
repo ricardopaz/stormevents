@@ -1,0 +1,63 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br"
+	ng-app="stormevents">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>StormEvents - 0.1</title>
+	
+	 <!-- Bootstrap core CSS -->
+    <link href="UI/templateStormSystem/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="UI/templateStormSystem/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="UI/templateStormSystem/css/style.css" rel="stylesheet">
+    <link href="UI/templateStormSystem/css/style-responsive.css" rel="stylesheet">
+	
+	<script>
+		function loadjs(files) {
+			var jsElement = document.createElement('script');
+			jsElement.type = "text/javascript";
+			jsElement.src = files;
+			jsElement.async = false;
+			document.getElementsByTagName('head')[0].appendChild(jsElement);
+		}
+	
+		function loadAll() {
+			var jsfiles = [];
+	
+			//Loading General JS
+			loadjs("https://www.google.com/jsapi");
+			loadjs("UI/js/angular.min.js");
+			loadjs("UI/js/angular-route.js");
+			loadjs("UI/js/autocomplete.js");
+			loadjs("UI/js/ng-infinite-scroll.js");
+			loadjs("UI/js/angular-ui-router.js");
+			loadjs("UI/js/app.js");
+			loadjs("UI/js/hello.js");
+			loadjs("UI/js/facebook.js");
+			loadjs("UI/js/windows.js");
+			loadjs("UI/js/google.js");
+			loadjs("UI/templateStormSystem/js/jquery.js");
+			loadjs("UI/templateStormSystem/js/bootstrap.min.js");
+			loadjs("UI/templateStormSystem/js/jquery.backstretch.min.js");
+
+			//Loading JS App
+			loadjs("stormSystem/redirect/redirectcontroller.js");
+			loadjs("stormSystem/basicmodelservice/basemodelservice.js");
+			loadjs("stormSystem/user/usercontroller.js");
+			loadjs("stormSystem/user/userservice.js");
+			loadjs("stormSystem/user/usermodelservice.js");
+			loadjs("stormSystem/login/logincontroller.js");
+		}
+	</script>
+	
+<script src="https://apis.google.com/js/client.js?onload=loadAll"></script>
+
+</head>
+	<body>
+		<div class="container-fluid">
+			<div id="MainPage" ui-view="index" class="row"></div>
+		</div>
+	</body>
+</html>
