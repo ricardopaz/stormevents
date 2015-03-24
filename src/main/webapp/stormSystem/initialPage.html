@@ -1,11 +1,7 @@
 <div id="helloUser" class="reports-fields" ng-controller="UserController">
 	{{hello}}
 	<br/>
-	<input type="text" ng-model="userName"/>
-	<br/>
-	<button ng-click="helloUser();" class="btn btn-primary">Hello User</button>
-	<br/>
-	<button id='facebook' onclick="hello( 'facebook' ).login();" class="btn btn-info">Facebook</button>
+	<img id="userPicture" src="{{user.picture}}"> - <p>{{user.name}}<p/>
 	<br/>
 	<button ng-click="getFriends('facebook', 'me/taggable_friends');" class="btn btn-success">Get Facebook me/friends</button>
 	

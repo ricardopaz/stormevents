@@ -24,6 +24,7 @@ import com.stormevents.exceptions.ModelException;
 public class UserModel extends BasicModel<User> {
 	
 	public static final String USER_BY_EMAIL = "SELECT u FROM User u WHERE u.email = :email";
+	public static final String GET_USER_BY_FACEBOOK_ID = "SELECT u FROM User u WHERE u.idFacebook = :idFacebook";
 
 	/**
 	 * Query that returns an user according to his email address
@@ -38,5 +39,12 @@ public class UserModel extends BasicModel<User> {
 		if(!users.isEmpty())
 			return users.get(0);
 		return null;
+	}
+
+	public User getAccountFacebookById(String idFacebook) throws ModelException {
+		Map<String, Object> params = new HashMap<>();
+		params.put("idFacebook", idFacebook);
+		List<User> users = query(GET_USER_BY_FACEBOOK_ID, params);
+		return users.get(0);
 	}
 }

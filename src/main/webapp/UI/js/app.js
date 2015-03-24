@@ -4,10 +4,10 @@ stormapp.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/');
 
 	$stateProvider.state('system', {
-		url : '/',
+		url : '/system',
 		views : {
 			'index' : {
-				templateUrl : 'stormSystem/user/helloUser.html'
+				templateUrl : 'stormSystem/initialPage.html'
 			}
 		}
 	})

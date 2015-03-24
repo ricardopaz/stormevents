@@ -1,5 +1,8 @@
 package com.stormevents.appengine;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -44,17 +47,52 @@ public class WebEndpoint {
     
     /** 
      * Login the user
+     * @throws UnsupportedEncodingException 
      */
     @ApiMethod(name = "user.login")
-    public GenericResponse loginUser(@Named("email") String email, @Named("password") String password) {
+    public GenericResponse loginUser(@Named("email") String email, @Named("password") String password) throws UnsupportedEncodingException {
     	User user = new User();
-    	user.setEmail(email);
+    	user.setEmail(URLDecoder.decode(email,"UTF-8"));
     	user.setPassword(password);
 
         try {
-			return new OK(userController.loginUser(user));
+        	User userLogged = userController.loginUser(user);
+        	return new OK(userLogged);
 		} catch (ControllerException e) {
 			logger.error("A error is thrown when trying to login: "
+					+ e.getMessage());
+			return Error.build(e);
+		}
+    }
+    
+    /** 
+     * Login the user by facebook
+     * @throws UnsupportedEncodingException 
+     */
+    @ApiMethod(name = "user.faceLogin")
+    public GenericResponse loginUserbyFacebook(@Named("idFacebook") String idFacebook,
+    											@Named("name") String name,
+    											@Named("email") String email,
+    											@Named("gender") String gender,
+    											@Named("picture") String picture) throws UnsupportedEncodingException {
+    	try {
+    		User user = userController.verifyAccountFacebook(idFacebook);
+	    	if(user.getId() != null){
+	    		return new OK(user);
+	    	}else{
+	    		user = new User();
+	        	user.setEmail(URLDecoder.decode(email,"UTF-8"));
+	        	user.setIdFacebook(idFacebook);
+	        	user.setName(URLDecoder.decode(name,"UTF-8"));
+	        	user.setGender(gender);
+	        	user.setPicture(URLDecoder.decode(picture,"UTF-8"));
+	        	user.setRole("user");
+	        	
+	        	userController.saveUser(user);
+	        	return new OK(user);
+	    	}
+		} catch (ControllerException e) {
+			logger.error("A error is thrown when trying to login in facebook: "
 					+ e.getMessage());
 			return Error.build(e);
 		}

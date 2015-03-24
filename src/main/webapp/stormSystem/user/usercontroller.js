@@ -1,12 +1,6 @@
 stormapp.controller('UserController', function($scope, userService) {
 	
-	$scope.hello = "";
-	$scope.userName = "Ricardo";
-	
-	//
-	// OAUTH PROXY
-	//
-	var fb = hello( "facebook" ).getAuthResponse();
+	$scope.user = userService.getUser();
 	
 	hello.init({
 		facebook : 712005875579621
@@ -14,15 +8,6 @@ stormapp.controller('UserController', function($scope, userService) {
 		scope : "friends", 
 		oauth_proxy : 'https://auth-server.herokuapp.com/proxy',
 		redirect_uri: 'http://localhost:8888/#/'
-	});
-
-	hello.on('auth.login', function(r){
-		// Get Profile
-		hello( r.network ).api( '/me' ).then( function(p){
-			var label = document.getElementById(r.network);
-			label.innerHTML = "<img src='"+ p.thumbnail + "' width=24/> Connected to "+ r.network +" as " + p.name;
-			$scope.hello = p.name + " logged in " + r.network;
-		});
 	});
 	
 	$scope.getFriends = function (network, path){
@@ -52,12 +37,6 @@ stormapp.controller('UserController', function($scope, userService) {
 				btn_more.innerHTML = "Next from "+network;
 				btn_more.style.display = 'block';
 			});
-		});
-	};
-	
-	$scope.helloUser = function(){
-		userService.helloUser($scope.userName).then(function(data){
-			$scope.hello = data.content.name;
 		});
 	};
 	

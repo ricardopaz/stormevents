@@ -20,11 +20,20 @@ public class User {
 	@Column(name = "email", nullable = false)
 	private String email;
 	
-	@Column(name = "password", nullable = false)
+	@Column(name = "password")
 	private String password;
 	
 	@Column(name = "role", nullable = false)
 	private String role;
+	
+	@Column(name = "id_facebook")
+	private String idFacebook;
+	
+	@Column(name = "picture")
+	private String picture;
+	
+	@Column(name = "gender")
+	private String gender;
 
 	public Long getId() {
 		return id;
@@ -66,6 +75,30 @@ public class User {
 		this.role = role;
 	}
 	
+	public String getIdFacebook() {
+		return idFacebook;
+	}
+
+	public void setIdFacebook(String idFacebook) {
+		this.idFacebook = idFacebook;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

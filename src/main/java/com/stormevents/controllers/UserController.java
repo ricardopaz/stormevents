@@ -1,6 +1,8 @@
 package com.stormevents.controllers;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.stormevents.dao.UserModel;
 import com.stormevents.entities.User;
@@ -65,15 +67,25 @@ public class UserController implements Serializable {
 	 * @return A reference of stormeventsUser
 	 * @throws ControllerException
 	 */
-	public boolean loginUser(User user) throws ControllerException {
+	public User loginUser(User user) throws ControllerException {
 		try {
 			User userLogged = userModel.userByEmail(user.getEmail());
 			if(userLogged != null){
 				if(user.getPassword().equals(userLogged.getPassword())){
-					return true;
+					return userLogged;
 				}
 			}
-			return false;
+			return null;
+		} catch (ModelException e) {
+			throw new ControllerException(e);
+		}
+	}
+
+	public User verifyAccountFacebook(String idFacebook) throws ControllerException {
+		try {
+			User user = new User();
+			user = userModel.getAccountFacebookById(idFacebook);
+			return user;
 		} catch (ModelException e) {
 			throw new ControllerException(e);
 		}
