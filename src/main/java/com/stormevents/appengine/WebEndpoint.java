@@ -36,17 +36,9 @@ public class WebEndpoint {
 		userController = new UserController();
 	}
 	
-	/** A simple endpoint method that takes a name and says Hi back */
-    @ApiMethod(name = "sayHi")
-    public GenericResponse sayHi(@Named("name") String name) {
-    	User user = new User();
-    	user.setName("Hi, " + name);
-
-        return new OK(user);
-    }
-    
     /** 
      * Login the user
+     * @author ricardo
      * @throws UnsupportedEncodingException 
      */
     @ApiMethod(name = "user.login")
@@ -67,6 +59,7 @@ public class WebEndpoint {
     
     /** 
      * Login the user by facebook
+     * @author ricardo
      * @throws UnsupportedEncodingException 
      */
     @ApiMethod(name = "user.faceLogin")
@@ -96,6 +89,22 @@ public class WebEndpoint {
 					+ e.getMessage());
 			return Error.build(e);
 		}
+    }
+    
+    /** 
+     * Get user by email
+     * @author ricardo
+     * @throws UnsupportedEncodingException 
+     */
+    @ApiMethod(name = "get.user.email")
+    public GenericResponse getUserByEmail(@Named("email") String email) throws UnsupportedEncodingException {
+        	try {
+				return new OK(userController.getUser(URLDecoder.decode(email,"UTF-8")));
+			} catch (ControllerException e) {
+				logger.error("A error is thrown when trying to get user by email --- "
+						+ e.getMessage());
+				return Error.build(e);
+			}
     }
     
 }

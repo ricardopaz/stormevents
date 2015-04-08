@@ -21,6 +21,7 @@ stormapp.controller('loginController', function($scope, userService) {
 			userService.loginUserByFacebook(user.id, user.name, user.email, user.gender, user.picture).then(function(data){
 				if(data.code==200){
 					userService.setUser(data.content);
+					$.cookie("userEmail",  user.email);
 					window.location.href = "#/system";
 				}
 			});
@@ -33,6 +34,7 @@ stormapp.controller('loginController', function($scope, userService) {
 				if(data.code == 200){
 					if(data.content != null){
 						userService.setUser(data.content);
+						$.cookie("userEmail",  $scope.email);
 						window.location.href = "#/system";
 					}else{
 						alert("Reveja seu login ou sua senha!");

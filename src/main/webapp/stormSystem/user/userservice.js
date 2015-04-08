@@ -45,4 +45,16 @@ stormapp.service('userService', function($q, $http,userModelService) {
 		return def.promise;
 	};
 	
+	this.getUserByEmail = function(email){
+		var def = $q.defer();
+		userModelService.getUserByEmail(email, function(data){
+			if(data.code == 200){
+				def.resolve(data);
+			}else{
+				def.reject(data);
+			}
+		});
+		return def.promise;
+	};
+	
 });

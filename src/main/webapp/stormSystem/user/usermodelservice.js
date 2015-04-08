@@ -34,9 +34,18 @@ stormapp.service('userModelService', function(basemodelservice) {
 		base.executeEndpoint(endpoint, data, callback);
 	};
 	
+	var getUserByEmail = function(email, callback) {
+		var data = {
+				email : email
+				};
+		var endpoint = getRequestId() + '.get.user.email';
+		base.executeEndpoint(endpoint, data, callback);
+	};
+	
 	return {
 		helloUser : helloUser,
 		loginUser : loginUser,
-		loginUserByFacebook : loginUserByFacebook
+		loginUserByFacebook : loginUserByFacebook,
+		getUserByEmail : getUserByEmail
 	};
 });
