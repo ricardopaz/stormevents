@@ -1,13 +1,15 @@
 package com.stormevents.controllers;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 import com.stormevents.dao.UserModel;
 import com.stormevents.entities.User;
 import com.stormevents.exceptions.ControllerException;
 import com.stormevents.exceptions.ModelException;
+import com.stormevents.network.Error;
+import com.stormevents.network.OK;
 import com.stormevents.util.StormEventsLogger;
 
 public class UserController implements Serializable {
@@ -88,6 +90,47 @@ public class UserController implements Serializable {
 			return user;
 		} catch (ModelException e) {
 			throw new ControllerException(e);
+		}
+	}
+	
+	public User loginUserbyFacebook(String idFacebook,String name,String email,String gender,String picture) throws UnsupportedEncodingException, ControllerException{
+		User user = verifyAccountFacebook(idFacebook);
+		if(user != null){
+			return user;
+		}else{
+			user = new User();
+			user.setEmail(URLDecoder.decode(email,"UTF-8"));
+			user.setIdFacebook(idFacebook);
+			user.setName(URLDecoder.decode(name,"UTF-8"));
+			user.setGender(gender);
+			user.setPicture(URLDecoder.decode(picture,"UTF-8"));
+			user.setRole("user");
+			
+			saveUser(user);
+			return user;
+		}
+	}
+	
+	public int newUser(String name,String email,String password,String gender) throws ControllerException, UnsupportedEncodingException{
+		String emailUser = URLDecoder.decode(email,"UTF-8");
+		User existsUser = getUser(emailUser);
+		if(existsUser==null){
+			User newUser = new User(); 
+			newUser.setName(URLDecoder.decode(name,"UTF-8"));
+			newUser.setEmail(emailUser);
+			newUser.setPassword(URLDecoder.decode(password,"UTF-8"));
+			newUser.setRole("user");
+			String genderUser = URLDecoder.decode(gender,"UTF-8");
+			newUser.setGender(genderUser);
+			if(genderUser.equals("female")){
+				newUser.setPicture("UI/templateStormSystem/img/user-female.png");
+			}else{
+				newUser.setPicture("UI/templateStormSystem/img/user-male.png");
+			}
+			saveUser(newUser);
+			return 1;
+		}else{
+			return 2000;
 		}
 	}
 

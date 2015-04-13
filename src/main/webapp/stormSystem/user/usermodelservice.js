@@ -38,7 +38,18 @@ stormapp.service('userModelService', function(basemodelservice) {
 		var data = {
 				email : email
 				};
-		var endpoint = getRequestId() + '.get.user.email';
+		var endpoint = getRequestId() + '.user.byemail';
+		base.executeEndpoint(endpoint, data, callback);
+	};
+	
+	var newUser = function(name, email, password, gender, callback) {
+		var data = {
+				name : name,
+				email : email,
+				password : password,
+				gender : gender
+				};
+		var endpoint = getRequestId() + '.new.user';
 		base.executeEndpoint(endpoint, data, callback);
 	};
 	
@@ -46,6 +57,7 @@ stormapp.service('userModelService', function(basemodelservice) {
 		helloUser : helloUser,
 		loginUser : loginUser,
 		loginUserByFacebook : loginUserByFacebook,
-		getUserByEmail : getUserByEmail
+		getUserByEmail : getUserByEmail,
+		newUser : newUser 
 	};
 });

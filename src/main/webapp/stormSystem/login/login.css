@@ -1,0 +1,53 @@
+.btn-cad{
+	margin-top: 12px;
+	width: 130px;
+}
+
+.line-login{
+	width: 106.5%;
+	margin-top: -5px;
+	margin-left: 4px;
+}
+
+.new-user-modal {
+    width: 365px;
+}
+
+.footer-new {
+    text-align: center;
+}
+
+.footer-new .btn-theme {
+    width: 200px;
+    height: 45px;
+}
+
+.footer-new-face {
+    background: #343434;
+}
+
+.btn-new-face {
+    margin-top: 17px;
+    background: #5193ea;
+    color: white;
+}
+
+.btn-new-user {
+    margin-top: -26px;
+}
+
+.new-user-modal .modal-header {
+    border: none;
+}
+
+.new-user-modal .modal-footer {
+    border: none;
+}
+
+.img-new-face{
+	border-radius: 100px; 
+}
+
+.title-new-face{
+	margin-top: 10px;	
+}

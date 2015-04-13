@@ -1,4 +1,4 @@
-stormapp.controller('UserController', function($scope, userService) {
+stormapp.controller('ConfigController', function($scope, userService) {
 	
 	$scope.user = userService.getUser();
 	var userEmail = $.cookie("userEmail");

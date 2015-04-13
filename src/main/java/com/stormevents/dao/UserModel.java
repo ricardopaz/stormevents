@@ -45,6 +45,10 @@ public class UserModel extends BasicModel<User> {
 		Map<String, Object> params = new HashMap<>();
 		params.put("idFacebook", idFacebook);
 		List<User> users = query(GET_USER_BY_FACEBOOK_ID, params);
-		return users.get(0);
+		if(users.size() > 0){
+			return users.get(0);
+		}else{
+			return null;
+		}
 	}
 }

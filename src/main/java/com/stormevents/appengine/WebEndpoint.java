@@ -69,24 +69,9 @@ public class WebEndpoint {
     											@Named("gender") String gender,
     											@Named("picture") String picture) throws UnsupportedEncodingException {
     	try {
-    		User user = userController.verifyAccountFacebook(idFacebook);
-	    	if(user.getId() != null){
-	    		return new OK(user);
-	    	}else{
-	    		user = new User();
-	        	user.setEmail(URLDecoder.decode(email,"UTF-8"));
-	        	user.setIdFacebook(idFacebook);
-	        	user.setName(URLDecoder.decode(name,"UTF-8"));
-	        	user.setGender(gender);
-	        	user.setPicture(URLDecoder.decode(picture,"UTF-8"));
-	        	user.setRole("user");
-	        	
-	        	userController.saveUser(user);
-	        	return new OK(user);
-	    	}
+			return new OK(userController.loginUserbyFacebook(idFacebook,name,email,gender,picture));
 		} catch (ControllerException e) {
-			logger.error("A error is thrown when trying to login in facebook: "
-					+ e.getMessage());
+			e.printStackTrace();
 			return Error.build(e);
 		}
     }
@@ -96,12 +81,35 @@ public class WebEndpoint {
      * @author ricardo
      * @throws UnsupportedEncodingException 
      */
-    @ApiMethod(name = "get.user.email")
+    @ApiMethod(name = "user.byemail")
     public GenericResponse getUserByEmail(@Named("email") String email) throws UnsupportedEncodingException {
         	try {
 				return new OK(userController.getUser(URLDecoder.decode(email,"UTF-8")));
 			} catch (ControllerException e) {
 				logger.error("A error is thrown when trying to get user by email --- "
+						+ e.getMessage());
+				return Error.build(e);
+			}
+    }
+    
+    /** 
+     * New user
+     * @author ricardo
+     * @throws UnsupportedEncodingException 
+     */
+    @ApiMethod(name = "new.user")
+    public GenericResponse newUser(@Named("name") String name, @Named("email") String email, @Named("password") String password, @Named("gender") String gender) throws UnsupportedEncodingException {
+        	try {
+        		int newUser = userController.newUser(name, email, password, gender);
+        		if(newUser == 1){
+        			return new OK();
+        		}else if(newUser == 2000){
+        			return new Error(2000,"");
+        		}else{
+        			return new Error();
+        		}
+			} catch (ControllerException e) {
+				logger.error("A error is thrown when trying to save new user --- "
 						+ e.getMessage());
 				return Error.build(e);
 			}

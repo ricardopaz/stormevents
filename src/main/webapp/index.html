@@ -13,6 +13,10 @@
     <!-- Custom styles for this template -->
     <link href="UI/templateStormSystem/css/style.css" rel="stylesheet">
     <link href="UI/templateStormSystem/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="UI/templateStormSystem/js/gritter/css/jquery.gritter.css">
+    <link href="UI/components/loading.css" rel="stylesheet">
+    
+    <link href="stormSystem/login/login.css" rel="stylesheet">
 	
 	<script>
 		function loadjs(files) {
@@ -22,7 +26,7 @@
 			jsElement.async = false;
 			document.getElementsByTagName('head')[0].appendChild(jsElement);
 		}
-	
+		
 		function loadAll() {
 			var jsfiles = [];
 	
@@ -40,16 +44,31 @@
 			loadjs("UI/js/google.js");
 			loadjs("UI/templateStormSystem/js/jquery.js");
 			loadjs("UI/templateStormSystem/js/bootstrap.min.js");
+			loadjs("UI/templateStormSystem/js/jquery-ui-1.9.2.custom.min.js");
+			loadjs("UI/templateStormSystem/js/jquery.ui.touch-punch.min.js");
+			loadjs("UI/templateStormSystem/js/jquery.dcjqaccordion.2.7.js");
+			loadjs("UI/templateStormSystem/js/jquery.scrollTo.min.js");
+			loadjs("UI/templateStormSystem/js/jquery.nicescroll.js");
 			loadjs("UI/templateStormSystem/js/jquery.backstretch.min.js");
+			loadjs("UI/templateStormSystem/js/common-scripts.js");
 			loadjs("UI/js/jquery.cookie.js");
+			loadjs("UI/js/gritter-conf.js");
+			loadjs("UI/templateStormSystem/js/gritter/js/jquery.gritter.js");
+			loadjs("UI/js/pStrength.jquery.js");
+			
+			//Loading Components
+			loadjs("UI/components/line.js");
+			loadjs("UI/components/loading.js");
 
 			//Loading JS App
 			loadjs("stormSystem/redirect/redirectcontroller.js");
+			loadjs("stormSystem/template/templatecontroller.js");
 			loadjs("stormSystem/basicmodelservice/basemodelservice.js");
 			loadjs("stormSystem/user/usercontroller.js");
 			loadjs("stormSystem/user/userservice.js");
 			loadjs("stormSystem/user/usermodelservice.js");
 			loadjs("stormSystem/login/logincontroller.js");
+			loadjs("stormSystem/config/configcontroller.js");
 		}
 		
 	</script>
@@ -59,7 +78,7 @@
 </head>
 	<body>
 		<div class="container-fluid">
-			<div id="MainPage" ui-view="index" class="row"></div>
+			<div id="MainPage" ui-view class="row"></div>
 		</div>
 	</body>
 </html>

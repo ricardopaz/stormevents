@@ -3,18 +3,40 @@ var stormapp = angular.module('stormevents', [ 'ui.router', 'infinite-scroll', '
 stormapp.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/');
 
-	$stateProvider.state('system', {
+	$stateProvider.state('index', {
+		url : '/',
+		views : {
+			'' : {
+				templateUrl : 'stormSystem/login/login.html'
+			}
+		}
+	})
+	.state('system', {
 		url : '/system',
 		views : {
-			'index' : {
+			'' : {
+				templateUrl : 'stormSystem/template/templateSystem.html'
+			},
+			'contentstorm@system' : {
 				templateUrl : 'stormSystem/initialPage.html'
+			}
+		}
+	})
+	.state('config', {
+		url : '/config',
+		views : {
+			'' : {
+				templateUrl : 'stormSystem/template/templateSystem.html'
+			},
+			'contentstorm@config' : {
+				templateUrl : 'stormSystem/config/config.html'
 			}
 		}
 	})
 	.state('site', {
 		url : '/web',
 		views : {
-			'index' : {
+			'' : {
 				templateUrl : 'redirect.html'
 			}
 		}
@@ -22,7 +44,7 @@ stormapp.config(function($stateProvider, $urlRouterProvider) {
 	.state('login', {
 		url : '/login',
 		views : {
-			'index' : {
+			'' : {
 				templateUrl : 'stormSystem/login/login.html'
 			}
 		}

@@ -44,7 +44,7 @@ a, a:hover, a:focus {
 
 /* Bootstrap Modifications */
 .modal-header {
-	background: #68dff0;
+	background: #343434;
 }
 
 .modal-title {
@@ -105,6 +105,7 @@ a, a:hover, a:focus {
 				inset 0 0.1em 0 #00F2FF,
 				inset -0.1em 0 0 #0CE8B6,	
 				inset 0 -0.1em 0 #0DFF83;
+	border-radius: 100px; 
 }
 
 .btn-theme:hover {
@@ -246,7 +247,7 @@ ul.top-menu > li > .logout {
     width: 210px;
     height: 100%;
     position: fixed;
-    background: #424a5d;
+    background: #343434;
 }
 
 #sidebar h5 {
@@ -309,7 +310,8 @@ ul.sidebar-menu {
 }
 
 ul.sidebar-menu li ul.sub li{
-    background: #424a5d;
+    background: #0CA3E8;
+    color: white;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
@@ -330,11 +332,11 @@ ul.sidebar-menu li ul.sub li a {
     -o-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    color: #aeb2b7;
+    color: white;
 }
 
 ul.sidebar-menu li ul.sub li a:hover {
-	color: white;
+	text-shadow: 0px 0px 25px #FFFFFF;
 	background: transparent;
 }
 
@@ -378,7 +380,7 @@ ul.sidebar-menu li a{
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    background: #68dff0;
+    background: #0CA3E8;
     color: #fff;
     display: block;
 
@@ -439,6 +441,7 @@ ul.sidebar-menu li a.active i {
     padding-bottom: 15px;
     padding-top: 0px;
     width: 100%;
+    background: rgba(0, 0, 0, 0.7);
 }
 
 a.logo {
@@ -1761,7 +1764,6 @@ label {
 }
 
 .form-horizontal.style-form .form-group {
-	border-bottom: 1px solid #eff2f7;
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 }
@@ -1956,11 +1958,8 @@ label {
 	font-size: 20px;
 	text-transform: uppercase;
 	font-weight: 300;
-    -webkit-animation-direction: normal;
-    -webkit-animation-duration: 20s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-name: colors;
-    -webkit-animation-timing-function: ease;
+    
+	background: #343434;
 }
 .login-wrap {
 	padding: 20px;
@@ -2259,15 +2258,10 @@ label {
 }
 
 .line{
-    width: 104%;
+    width: 112%;
     margin-left: -2%;
     height: 5px;
-    margin-top: 4%;
-    -webkit-animation-direction: normal;
-    -webkit-animation-duration: 20s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-name: colors;
-    -webkit-animation-timing-function: ease;
+    margin-top: 57px;
 }
 
 @-webkit-keyframes colors {
@@ -2281,4 +2275,75 @@ label {
     100% {background-color: #0CA3E8;}
 }
 
+.color1 {
+    width: 30%;
+    height: 5px;
+    float: left;
+    border-radius:100px;
+    margin-left:-5px;
+    background: #0D73FF;
+}
+.color2 {
+    width: 25%;
+    height: 5px;
+    float: left;
+    border-radius:100px;
+    margin-left:-5px;
+    background: #0CA3E8;
+}
+.color3 {
+    width: 15%;
+    height: 5px;
+    float: left;
+    border-radius:100px;
+    margin-left:-5px;
+    background: #00F2FF;
+}
+.color4 {
+    width: 15%;
+    height: 5px;
+    float: left;
+    border-radius:100px;
+    margin-left:-5px;
+    background: #0CE8B6;
+}
+.color5 {
+    width: 15%;
+    height: 5px;
+    float: left;
+    border-radius:100px;
+    margin-left:-5px;
+    background: #0DFF83;
+}
 
+.line-modal{
+	width: 104%;
+	margin-top: 6px;
+	margin-left: 3px;
+}
+
+.danger:hover{
+	color: red;
+}
+
+.error {
+    color: rgb(200, 3, 3);
+    border-color: rgb(200, 3, 3);
+}
+
+.side-line {
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 15px;
+    margin-bottom: 8px;
+}
+
+.end-side{
+	text-align: center;
+	margin-top: 100px;
+}
+
+.end-side .glyphicon-fire{
+	color: white;
+	font-size: 24px;
+}

@@ -3,33 +3,34 @@
 	<!--header start-->
 	<header class="header black-bg">
 	      <!--logo start-->
-	      <a href="index.html" class="logo"><i class="fa fa-fire"></i> <b>Storm Events</b></a>
+	      <a href="index.html" class="logo"><i class="glyphicon glyphicon-fire"></i> <b>Storm Events</b></a>
 	      <!--logo end-->
 	      <div class="nav notify-row" id="top_menu">
 	         
 	      </div>
 	      <div class="top-menu">
 	      	<ul class="nav pull-right top-menu">
-	              <li><a class="logout" href="login.html">Cadastre-se</a></li>
+	              <li><button class="btn btn-theme btn-cad">Entrar</button></li>
 	      	</ul>
 	      </div>
-	      <div class="line"></div>
+	      <line></line>
 	 </header>
 	<!--header end-->
 
 	<div id="login-page">
 		<div class="container">
 
-			<form class="form-login">
+			<form class="form-login form-horizontal style-form">
 				<h2 class="form-login-heading">Login</h2>
+				<line lineclass="line-login"></line>
 				<div class="login-wrap">
-					<input type="text" class="form-control" placeholder="Email" ng-model="email"
-						autofocus> <br> <input type="password"
-						class="form-control" placeholder="Senha" ng-model="password"> <label
-						class="checkbox"> <span class="pull-right"> <a
-							data-toggle="modal" href="login.html#myModal"> Esqueceu a senha?</a>
-
-					</span>
+					<input id="email-login" type="text" class="form-control round-form" placeholder="Email" ng-model="user.email" autofocus> 
+					<br> 
+					<input id="password-login" type="password" class="form-control round-form" placeholder="Senha" ng-model="user.password"> 
+					<label class="checkbox"> 
+						<span class="pull-right"> 
+							<a data-toggle="modal" href="login.html#myModal"> Esqueceu a senha?</a>
+						</span>
 					</label>
 					<button class="btn btn-theme btn-block" ng-click="loginUser();">
 						<i class="fa fa-lock"></i> Entrar
@@ -44,7 +45,7 @@
 						<br>
 					</div>
 					<div class="registration">
-						Você ainda não possui conta no Storm?<br /> <a class="" href="#"> Crie sua conta agora </a>
+						Você ainda não possui conta no Storm?<br /> <a data-toggle="modal" href="login.html#modalInsert"> Crie sua conta agora </a>
 					</div>
 
 				</div>
@@ -58,6 +59,7 @@
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">&times;</button>
 								<h4 class="modal-title">Esqueceu sua senha?</h4>
+								<line lineclass="line-modal"></line>
 							</div>
 							<div class="modal-body">
 								<p>Informe o email da sua conta Storm para enviarmos sua nova senha.</p>
@@ -66,13 +68,93 @@
 
 							</div>
 							<div class="modal-footer">
-								<button data-dismiss="modal" class="btn btn-default"
+								<button data-dismiss="modal" class="btn btn-theme danger"
 									type="button">Cancelar</button>
 								<button class="btn btn-theme" type="button">Solicitar</button>
 							</div>
 						</div>
 					</div>
 				</div>
+				
+				<!-- Modal Insert New User-->
+				<div aria-hidden="true" aria-labelledby="modalInsert" role="dialog"
+					tabindex="-1" id="modalInsert" class="modal fade" data-backdrop="static">
+					<div class="modal-dialog new-user-modal">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								<h4 class="modal-title">Crie aqui a sua conta Storm</h4>
+								<line lineclass="line-modal"></line>
+							</div>
+							<div class="modal-body">
+							
+							<div id="name" class="form-group">
+		                        <label class="col-sm-3 control-label">Nome *</label>
+		                        <div class="col-sm-9">
+		                        	<input type="text" class="form-control round-form" ng-model="user.name">
+		                        </div>
+	                         </div>
+	                         
+	                         <div id="email" class="form-group">
+		                        <label class="col-sm-3 control-label">Email *</label>
+		                        <div class="col-sm-9">
+		                        	<input type="text" class="form-control round-form" ng-model="user.email">
+		                        </div>
+	                         </div>
+	                         
+	                         <div id="password" class="form-group">
+		                        <label class="col-sm-3 control-label">Senha *</label>
+		                        <div class="col-sm-9">
+		                        	<input id="passwordText" type="password" class="form-control round-form" ng-model="user.password">
+		                        </div>
+	                         </div>
+	                         
+	                         <div id="passwordConfirm" class="form-group">
+		                        <label class="col-sm-3 control-label">Confirmar Senha *</label>
+		                        <div class="col-sm-9">
+		                        	<input id="passwordConfirmText" type="password" class="form-control round-form" ng-model="user.passwordConfirm">
+		                        </div>
+	                         </div>
+	                         
+	                          <div id="gender" class="form-group">
+		                        <label class="col-sm-3 control-label">Sexo *</label>
+		                        <div class="col-sm-9">
+			                        <select class="form-control round-form" ng-init="user.gender = options[0]" ng-model="user.gender" ng-options="option.name for option in options"></select>
+		                        </div>
+	                         </div>
+
+							</div>
+							<div class="modal-footer footer-new">
+								<button class="btn btn-theme btn-new-user" type="button" ng-click="newUser();">Cadastrar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Modal Insert New User by Face-->
+				<div aria-hidden="true" aria-labelledby="modalNewFace" role="dialog"
+					tabindex="-1" id="modalNewFace" class="modal fade" data-backdrop="static">
+					<div class="modal-dialog new-user-modal">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&times;</button>
+								
+								<img id="userPicture" src="{{newUserFace.picture}}" class="img-new-face">
+								<h4 class="modal-title title-new-face">Olá {{newUserFace.nome}}!</h4>
+								<p class="col-sm-12 text-face">Percebemos que a sua conta do facebook está ativa e com apenas um clique você pode se cadastrar no Storm Events. Basta clicar neste botão abaixo e curtir os melhores shows e eventos de onde você estiver!</label>
+								<p >
+								<line lineclass="line-modal"></line>
+							</div>
+							<div class="modal-footer footer-new footer-new-face">
+								<button class="btn btn-theme btn-new-face" type="button" ng-click="newUserFace();"><i class="fa fa-facebook"></i> Cadastrar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<loading loadingclass=""> </loading>
 
 			</form>
 
